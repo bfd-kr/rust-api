@@ -1020,6 +1020,7 @@ dependencies = [
  "actix-web",
  "serde",
  "serde_json",
+ "simple-server-timing-header",
  "uuid",
 ]
 
@@ -1125,6 +1126,12 @@ checksum = "a9e9e0b4211b72e7b8b6e85c807d36c212bdb33ea8587f7569562a84df5465b1"
 dependencies = [
  "libc",
 ]
+
+[[package]]
+name = "simple-server-timing-header"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "16e78919e05c9b8e123d435a4ad104b488ad1585631830e413830985c214086e"
 
 [[package]]
 name = "slab"

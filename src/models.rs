@@ -1,9 +1,13 @@
-use serde::{Serialize, Deserialize};
-use uuid::Uuid;
+use serde::Serialize;
 
-#[derive(Serialize, Deserialize)]
-pub struct Item {
-    pub id: Uuid,
-    pub name: String,
-    pub description: String,
+#[derive(Serialize)]
+pub struct Error {
+    pub(crate) code: String,
+    pub(crate) message: String,
+}
+
+#[derive(Serialize)]
+pub enum ApiResponse<T> {
+    Success { data: T },
+    Error { error: Error },
 }
