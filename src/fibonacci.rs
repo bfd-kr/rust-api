@@ -4,7 +4,7 @@ use simple_server_timing_header::Timer;
 
 use crate::models::{ApiResponse, Error};
 
-const MAX_FIBONACCI_NUMBER: u32 = 45;
+pub(crate) const MAX_FIBONACCI_NUMBER: u32 = 45;
 
 #[derive(Serialize)]
 struct FibonacciResponse {
@@ -15,7 +15,7 @@ struct FibonacciResponse {
 pub async fn fibonacci(req: HttpRequest) -> impl Responder {
     let n: u32 = req.match_info().query("n").parse().unwrap_or(0);
 
-    // validate the number is not negative and less than 40
+    // validate the number is not negative and less than max
     if n > MAX_FIBONACCI_NUMBER {
         let error_response: ApiResponse<Error> = ApiResponse::Error {
             error: Error {
@@ -48,7 +48,7 @@ pub async fn fibonacci(req: HttpRequest) -> impl Responder {
         .json(wrapped_response)
 }
 
-fn calculate_fibonacci(n: u32) -> u32 {
+pub(crate) fn calculate_fibonacci(n: u32) -> u32 {
     match n {
         0 => 0,
         1 => 1,
